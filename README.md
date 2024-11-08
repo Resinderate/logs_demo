@@ -11,13 +11,13 @@ Demo app processing some request info and exposing stats via API.
 
 Some pieces of setup here.
 - `uv run alembic upgrade head` to run migrations and create local DB. Here just using SQLite for simplicity.
-    - To clear the DB and data just delete the `uptime.db` file created in the root `logs` folder and re-run the migrations to create the DB again.
+    - To clear the DB and data just delete the `uptime.db` file created in the root folder and re-run the migrations to create the DB again.
 - `uv run python -m bytewax.run uptime.dataflows` to process the log file and write the results to the DB.
 - `uv run uvicorn uptime.app:app` to run the API with uvicorn.
 
 As long as we have `uv` we don't need to install Python, virtualenv, or it's dependencies.
 
-Those can be run with a **single** command via make:
+Those can be **run with a single** command via make:
 - `make demo`
 
 The API will then be running with available data. Can then be viewed for example with:
