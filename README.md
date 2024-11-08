@@ -20,10 +20,21 @@ As long as we have `uv` we don't need to install Python, virtualenv, or it's dep
 Those can be **run with a single** command via make:
 - `make demo`
 
-The API will then be running with available data. Can then be viewed for example with:
+The API will then be running with available data. For example, and can then be queried with:
 ```
-http://127.0.0.1:8000/api/customers/cust_15/stats?from=2024-11-05
+$ make demo
+uv run alembic upgrade head
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+uv run python -m bytewax.run uptime.dataflows
+uv run uvicorn uptime.app:app
+INFO:     Started server process [30978]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
+
+GET http://127.0.0.1:8000/api/customers/cust_15/stats?from=2024-11-05
 ->
 {
   "id": 171,
